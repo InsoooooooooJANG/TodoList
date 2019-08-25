@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+
+<html>
+    <head>
+        <title>To-do List</title>
+        <link rel="stylesheet" type="text/css" href="css/todoStyle.css">
+    </head>
+    <body>
+        <script type="text/javascript" src="javascript/todoList.js"></script>
+
+        <div id="todoList">   
+            <h1 id="test">ToDoList</h1>
+            <ul id="addedTodoList" onclick="move();"> 
+            
+            </ul>
+            <input type="text" id="addText"/>
+            <input type="button" id="add" value="add" onclick="addList();"/>
+        </div>
+        <div id="doneList">
+            <h1>DoneList</h1>
+            <ul id="doneTodoList">
+                
+            </ul>
+        </div>
+    </body>
+</html>
