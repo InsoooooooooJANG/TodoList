@@ -1,0 +1,71 @@
+<html>
+	<p>Add Your Schedule</p>
+	<input id="contents" type="textbox"/> <input id="add" type="button" value="Add" onclick="addSchedule()"/>
+
+	<table>
+		<thead>
+			<th>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>index</td>
+					<td>contents</td>
+				</tr>
+			</th>
+		</thead>
+		<tbody id="tableBody">
+		</tbody>
+	</table>
+</html>
+
+<script>
+	var idx = 0;
+
+	function deleteSchedule(id){
+		var checkboxElement = document.getElementById(id);
+		var trId = checkboxElement.parentNode.parentNode.getAttribute("id");
+		var trElement = document.getElementById(trId);
+		var tBodyElement = document.getElementById("tableBody");
+
+		trElement.setAttribute("style", "background:gray");
+		checkboxElement.setAttribute("disabled", "disabled");
+
+		var tmpElement = trElement.cloneNode(true);
+
+		trElement.parentNode.removeChild(trElement);
+
+		console.log(tmpElement.parentNode);
+
+		tBodyElement.appendChild(tmpElement);
+	} 
+
+	function addSchedule(){
+		idx++;
+
+		var addContents = document.getElementById("contents").value;
+		var tbody = document.getElementById("tableBody");
+
+		var tr = document.createElement('tr');
+		tr.setAttribute("id", "tr" + idx);
+
+		var td1 = document.createElement('td');
+		var checkbox = document.createElement('input');
+		checkbox.setAttribute("type", "checkbox");
+		checkbox.setAttribute("id", "checkbox" + idx);
+		checkbox.setAttribute("onchange", "deleteSchedule(this.id)");
+		td1.appendChild(checkbox);
+
+		var td2 = document.createElement('td');
+		td2.innerHTML = idx;
+
+		var td3 = document.createElement('td');
+		td3.innerHTML = addContents;
+
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+
+		console.log(tr);
+
+		tbody.appendChild(tr);
+	}
+</script>
